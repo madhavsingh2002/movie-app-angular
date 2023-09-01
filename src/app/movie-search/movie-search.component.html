@@ -1,0 +1,59 @@
+<div class="container">
+    <h1 class="text-center mt-3">🍿Movie-App guide🎬</h1>
+    <div class="movie-body">
+      <div class="input-group">
+        <input
+          type="text"
+          name="searchMovie"
+          class="form-control p-2"
+          placeholder="Search your Movie"
+          [(ngModel)]="searchMovie"
+          (keyup.enter)="searchMovieData()"
+        />
+        <button
+          class="btn btn-danger ms-2"
+          type="button"
+          (click)="searchMovieData()"
+          style="padding: 5px 22px"
+        >
+          Search
+        </button>
+      </div>
+      <div class="movie-content d-flex flex-column justify-content-between">
+        <div class="info d-flex">
+          <img [src]="MovieDetail.Poster" class="poster mt-2" />
+          <div class="info-content">
+            <h2> {{MovieDetail.Title}} </h2>
+            <div class="rating mb-3">
+              <h5>
+                <span
+                  class="material-symbols-outlined"
+                  style="color: #e73c37"
+                >
+                  grade
+                </span>
+                {{ MovieDetail.imdbRating }}
+              </h5>
+            </div>
+            <div class="details mb-3">
+              <span class="ms-3">{{ MovieDetail.Rated }} </span>
+              <span class="ms-3">{{ MovieDetail.year }} </span>
+              <span class="ms-3">{{ MovieDetail.Runtime }} </span>
+            </div>
+            <div class="genre mb-3 d-flex gap-3 justify-content-center">
+                <div *ngFor="let genre of MovieDetail.Genre.split(',')">{{ genre }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="plot mt-2" style="color: white">
+          <h4>Plot:</h4>
+          <p>{{ MovieDetail.Plot }} </p>
+        </div>
+        <div class="mt-2" style="color: white">
+          <h4>Cast:</h4>
+          <p>{{ MovieDetail.Actors }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
